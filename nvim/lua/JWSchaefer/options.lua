@@ -26,11 +26,6 @@ vim.opt.cmdheight = 0
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 
-vim.api.nvim_create_autocmd("VimEnter", {
-      command = "Neotree toggle",
-})
-
-
 -- Disable inserting comments on new lines (do not try to change it in a simple way, I had to do this to avoid a bug)
 -- vim.api.nvim_create_autocmd("FileType", {
 -- 	pattern = "*",
