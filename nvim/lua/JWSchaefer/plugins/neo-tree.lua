@@ -47,8 +47,8 @@ return {
 						expander_highlight = "NeoTreeExpander",
 					},
 					icon = {
-						folder_closed = "",
-						folder_open = "",
+						folder_closed = "",
+						folder_open = "",
 						folder_empty = "󰜌",
 						provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
 							if node.type == "file" or node.type == "terminal" then

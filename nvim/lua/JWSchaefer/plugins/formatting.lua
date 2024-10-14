@@ -25,6 +25,7 @@ return {
 				yaml = { "pretter" },
 				toml = { "prettier" },
 				svelte = { "prettier" },
+				LaTeX = { "latexindent" },
 			},
 			format_on_save = fmt_opts,
 		})
