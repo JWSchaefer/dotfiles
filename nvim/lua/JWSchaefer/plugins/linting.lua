@@ -11,7 +11,7 @@ return {
 			typescriptreact = { "eslint_d" },
 			rust = { "clippy" },
 			python = { "ruff" },
-			LaTeX = { "vale" },
+			-- tex = { "vale" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

@@ -7,7 +7,7 @@ return {
 		local fmt_opts = {
 			lsp_fallback = true,
 			async = false,
-			timeout_ms = 500,
+			timeout_ms = 10000,
 		}
 
 		conform.setup({
@@ -22,10 +22,10 @@ return {
 				lua = { "stylua" },
 				markdown = { "prettier" },
 				json = { "prettier" },
-				yaml = { "pretter" },
+				yaml = { "prettier" },
 				toml = { "prettier" },
 				svelte = { "prettier" },
-				LaTeX = { "latexindent" },
+				tex = { "latexindent" },
 			},
 			format_on_save = fmt_opts,
 		})

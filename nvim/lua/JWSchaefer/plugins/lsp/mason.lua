@@ -36,7 +36,9 @@ return {
 				"lua_ls",
 				"prismals",
 				"pyright",
-				"ltex-ls",
+				"ltex",
+				"glslls",
+				"wgsl_analyzer",
 			},
 		})
 
@@ -50,7 +52,6 @@ return {
 				"eslint_d",
 				"vale",
 				"bibtex-tidy",
-				"latexindent",
 			},
 		})
 	end,
