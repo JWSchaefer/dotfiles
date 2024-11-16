@@ -1,11 +1,14 @@
 vim.g.mapleader = " "
 
 -- Telescope
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+local telescope = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
+
+local swenv = require("swenv.api")
+vim.keymap.set("n", "<leader>P", swenv.pick_venv, { desc = "Set Python Environment" })
 
 -- Comments
 vim.keymap.set("x", "<Leader>/", "<plug>(comment_toggle_linewise_visual)")
@@ -19,6 +22,10 @@ local opts = { silent = true, noremap = true }
 -- basic
 map("n", "<Leader>w", "<Cmd>w<CR>", opts)
 map("n", "<Leader>q", "<Cmd>q<CR>", opts)
+map("i", "<Esc>", "<Esc>:w<CR>", opts)
+map("v", "<Leader>c", "y", opts)
+map("v", "<Leader>v", "p", opts)
+map("n", "<Leader>a", "ggVG", opts)
 
 map({ "n", "i" }, "<D-Up>", "<Cmd>10+<CR>", opts)
 map({ "n", "i" }, "<D-Down>", "<Cmd>10-<CR>", opts)
