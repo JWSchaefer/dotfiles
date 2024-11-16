@@ -26,16 +26,6 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
-				lualine_d = {'swenv',
-					cond = function()
-						return vim.bo.filetype == "python"
-					end,
-				},
-				lualine_w = { 'swenv', icon = '<icon>', 
-					cond = function()
-						return vim.bo.filetype == "python"
-					end,}, -- passing lualine component options
-				lualine_x = { "encoding", "fileformat", "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
