@@ -40,6 +40,16 @@ return {
 				inc_rename = false, -- enables an input dialog for inc-rename.nvim
 				lsp_doc_border = false, -- add a border to hover docs and signature help
 			},
+			messages = {
+				-- NOTE: If you enable messages, then the cmdline is enabled automatically.
+				-- This is a current Neovim limitation.
+				enabled = false, -- enables the Noice messages UI
+				-- view = "notify", -- default view for messages
+				-- view_error = "notify", -- view for errors
+				-- view_warn = "notify", -- view for warnings
+				-- view_history = "messages", -- view for :messages
+				-- view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+			},
 			views = {
 				cmdline_popup = {
 					border = {
@@ -61,6 +71,16 @@ return {
 					},
 					opts = { skip = true },
 				},
+				{
+
+					-- Rule to suppress messages from your linter and formatter
+					filter = {
+						event = "wmsg", -- Only handle messages shown in `msg_show`
+						kind = "", -- Match all kinds (or specify "error" if needed)
+					},
+					opts = { skip = true }, -- Skip displaying these messages
+				},
+
 				{
 					filter = {
 						event = "lsp",

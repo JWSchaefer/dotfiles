@@ -253,3 +253,7 @@ if.app-id = 'net.whatsapp.WhatsApp'
 run = 'move-node-to-workspace W'
 
 
+[[on-window-detected]]
+if.app-id = 'com.mathworks.matlab'
+run = 'move-node-to-workspace M'
+

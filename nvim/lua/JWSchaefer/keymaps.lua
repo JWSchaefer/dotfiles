@@ -25,7 +25,7 @@ map("n", "<Leader>q", "<Cmd>q<CR>", opts)
 map("i", "<Esc>", "<Esc>:w<CR>", opts)
 map("v", "<Leader>c", "y", opts)
 map("v", "<Leader>v", "p", opts)
-map("n", "<Leader>a", "ggVG", opts)
+map("n", "<Leader>a", "ggVG<C-O>", opts)
 
 map({ "n", "i" }, "<D-Up>", "<Cmd>10+<CR>", opts)
 map({ "n", "i" }, "<D-Down>", "<Cmd>10-<CR>", opts)

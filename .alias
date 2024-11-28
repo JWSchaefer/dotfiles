@@ -4,4 +4,10 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+alias lit="/Users/joe/ICL/JosephSchaefer/02_LiteratureBackground"
+
 alias code='codium'
+
+
+alias xfoil='cd ~/repos/external/xfoil/runs/;../bin/./xfoil'
+alias resize_xfoil='wmctrl -i -r 0x00600001 -e 0,0,0,800,800'

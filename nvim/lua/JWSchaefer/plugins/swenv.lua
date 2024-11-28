@@ -11,6 +11,7 @@ return {
 			end,
 			-- Path passed to `get_venvs`.
 			venvs_path = vim.fn.expand("~/Library/Caches/pypoetry/virtualenvs"),
+			venvs_path = vim.fn.expand("~/.venvs/"),
 			-- Something to do after setting an environment, for example call vim.cmd.LspRestart
 			post_set_venv = function(venv)
 				vim.cmd("LspRestart")

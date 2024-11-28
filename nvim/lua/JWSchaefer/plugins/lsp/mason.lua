@@ -28,14 +28,15 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"rust_analyzer",
-				"tsserver",
+
 				"html",
 				"cssls",
+				"pyright",
+				"ruff",
 				"tailwindcss",
 				"svelte",
 				"lua_ls",
 				"prismals",
-				"pyright",
 				"ltex",
 				"glslls",
 				"wgsl_analyzer",
@@ -47,8 +48,9 @@ return {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"isort", -- python formatter
-				"black", -- python formatter
-				"pylint",
+				"ruff", -- python formatter
+				"ruff-lsp",
+				"pyright",
 				"eslint_d",
 				"vale",
 				"bibtex-tidy",
