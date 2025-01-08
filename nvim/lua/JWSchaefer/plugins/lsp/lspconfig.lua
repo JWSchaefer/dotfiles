@@ -101,9 +101,18 @@ return {
 				})
 			end,
 
-			["ruff-lsp"] = function()
-				-- configure svelte server
-				lspconfig["ruff-lsp"].setup({})
+			["ltex"] = function()
+				lspconfig["ltex"].setup({
+					settings = {
+						ltex = {
+							language = "en-GB",
+							-- Disable rules here
+							disabledRules = {
+								["en-GB"] = { "OXFORD_SPELLING_Z_NOT_S" },
+							},
+						},
+					},
+				})
 			end,
 
 			["lua_ls"] = function()

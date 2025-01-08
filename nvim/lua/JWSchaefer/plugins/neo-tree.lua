@@ -121,6 +121,8 @@ return {
 							"toggle_node",
 							nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
 						},
+						["<right>"] = "open_node",
+						["<left>"] = "close_node",
 						["<2-LeftMouse>"] = "open",
 						["<cr>"] = "open",
 						["<esc>"] = "cancel", -- close preview or floating neo-tree window
@@ -294,7 +296,7 @@ return {
 			vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 			vim.api.nvim_create_autocmd("SessionLoadPost", {
 				command = ":Neotree reveal",
-			})		
+			})
 		end,
 	},
 }

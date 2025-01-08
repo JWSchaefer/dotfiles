@@ -26,6 +26,17 @@ vim.opt.cmdheight = 0
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 
+-- vim.opt.spell = true
+-- vim.opt.spelllang = "en_gb"
+--
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "tex", "markdown" },
+	callback = function()
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = "en_gb"
+	end,
+})
+
 -- Attempt to prevent annoying messages
 --
 vim.diagnostic.config({ virtual_text = false })

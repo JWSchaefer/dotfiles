@@ -23,12 +23,17 @@ local opts = { silent = true, noremap = true }
 map("n", "<Leader>w", "<Cmd>w<CR>", opts)
 map("n", "<Leader>q", "<Cmd>q<CR>", opts)
 map("i", "<Esc>", "<Esc>:w<CR>", opts)
-map("v", "<Leader>c", "y", opts)
-map("v", "<Leader>v", "p", opts)
-map("n", "<Leader>a", "ggVG<C-O>", opts)
+map("v", "<C-C>", "y", opts)
+map("v", "<C-V>", "p", opts)
+map("n", "<C-A>", "ggVG", opts)
 
-map({ "n", "i" }, "<D-Up>", "<Cmd>10+<CR>", opts)
-map({ "n", "i" }, "<D-Down>", "<Cmd>10-<CR>", opts)
+-- Move 10 lines down in normal mode
+map("n", "<C-Up>", "10k", opts)
+map("n", "<C-Down>", "10j", opts)
+
+-- For insert mode, you'll need to exit insert mode before moving
+map("i", "<C-Up>", "<Esc>10k", opts)
+map("i", "<C-Down>", "<Esc>10j", opts)
 
 -- select all map("n", "<C-a>", "ggVG", silent)
 -- delete words
@@ -43,11 +48,6 @@ map("i", "<C-Right>", "<C-o>e", opts)
 map("n", "<Leader>vd", "<Cmd>Gvdiffsplit!<CR>", opts)
 
 -- Window
-
-vim.api.nvim_set_keymap("n", "<C-Left>", "<C-w>h", opts)
-vim.api.nvim_set_keymap("n", "<C-Right>", "<C-w>l", opts)
-vim.api.nvim_set_keymap("n", "<C-Up>", "<C-w>k", opts)
-vim.api.nvim_set_keymap("n", "<C-Down>", "<C-w>j", opts)
 
 vim.keymap.set("n", "<leader>gl", function()
 	vim.diagnostic.open_float()

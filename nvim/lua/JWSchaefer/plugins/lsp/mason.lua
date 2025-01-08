@@ -1,4 +1,5 @@
 return {
+
 	"williamboman/mason.nvim",
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
@@ -28,7 +29,7 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"rust_analyzer",
-
+				"vale_ls",
 				"html",
 				"cssls",
 				"pyright",
@@ -49,7 +50,7 @@ return {
 				"stylua", -- lua formatter
 				"isort", -- python formatter
 				"ruff", -- python formatter
-				"ruff-lsp",
+				"vale",
 				"pyright",
 				"eslint_d",
 				"vale",

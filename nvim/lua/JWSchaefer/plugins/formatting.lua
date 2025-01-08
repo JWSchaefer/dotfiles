@@ -28,6 +28,13 @@ return {
 				tex = { "latexindent" },
 			},
 			format_on_save = fmt_opts,
+			formatters = {
+				latexindent = {
+					command = "latexindent",
+					args = { "-m", "-g", "/dev/null" }, -- Prevent creating a log file in the current directory
+					stdin = true, -- Ensure the formatter reads input from stdin
+				},
+			},
 		})
 
 		vim.keymap.set({ "n", "v" }, "<Leader>fm", function()
