@@ -36,10 +36,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.spelllang = "en_gb"
 	end,
 })
-
 -- Attempt to prevent annoying messages
 --
-vim.diagnostic.config({ virtual_text = false })
 
 -- Disable inserting comments on new lines (do not try to change it in a simple way, I had to do this to avoid a bug)
 -- vim.api.nvim_create_autocmd("FileType", {

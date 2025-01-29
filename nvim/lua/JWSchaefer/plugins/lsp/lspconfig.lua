@@ -1,3 +1,12 @@
+local function get_python_executable()
+	local cwd = vim.fn.getcwd()
+	local venv_path = cwd .. "/venv/bin/python"
+	if vim.fn.executable(venv_path) == 1 then
+		return venv_path
+	end
+	return "python"
+end
+
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
@@ -42,14 +51,13 @@ return {
 				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
 				opts.desc = "See available code actions"
-				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+				keymap.set({ "n", "v" }, "<leader>.", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
 				opts.desc = "Show buffer diagnostics"
 				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
 				opts.desc = "Show line diagnostics"
 				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
@@ -101,11 +109,32 @@ return {
 				})
 			end,
 
+			-- ["pyright"] = function()
+			-- 	local python_path = ""
+			-- 	local venv_path = vim.fn.getenv("PYRIGHT_VENV")
+			--
+			-- 	if venv_path ~= vim.NIL then
+			-- 		python_path = tostring(venv_path) .. "/bin/python3"
+			-- 	else
+			-- 		venv_path = ""
+			-- 	end
+			-- 	-- vim.notify(tostring(venv_path), vim.log.levels.ERROR)
+			-- 	-- vim.notify(python_path, vim.log.levels.ERROR)
+			--
+			-- 	lspconfig["pyright"].setup({
+			-- 		settings = {
+			-- 			pythonPath = python_path,
+			-- 			venvPath = tostring(venv_path),
+			-- 		},
+			-- 	})
+			-- end,
+
 			["ltex"] = function()
 				lspconfig["ltex"].setup({
 					settings = {
 						ltex = {
-							language = "en-GB",
+							language = "en",
+							check = {},
 							-- Disable rules here
 							disabledRules = {
 								["en-GB"] = { "OXFORD_SPELLING_Z_NOT_S" },

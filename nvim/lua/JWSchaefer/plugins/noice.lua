@@ -20,6 +20,22 @@ return {
 				opts = { skip = true },
 			},
 			{
+				-- empty hover
+				filter = { event = "mini", find = "Checking document" },
+				opts = { skip = true },
+			},
+			{
+				-- empty hover
+				filter = { event = "msg_show", find = "VimTeX" },
+				opts = { skip = true },
+			},
+			{
+				-- empty hover
+				filter = { event = "msg_show", find = "Compilation completed" },
+				opts = { skip = true },
+			},
+
+			{
 				-- formatter
 				filter = { event = "notify", find = "No change necessary with" },
 				opts = { skip = true },

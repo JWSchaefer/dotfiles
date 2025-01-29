@@ -4,8 +4,12 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
-alias lit="/Users/joe/ICL/JosephSchaefer/02_LiteratureBackground"
-
+alias lit="~/ICL/JosephSchaefer/02_LiteratureBackground"
+alias review="~/ICL/JosephSchaefer/04_Dissemination/01_Review_2024"
+alias splash="~/repos/splash"
+alias fcps="~/phd/repos/fcps/"
+alias mdo="~/phd/repos/mdo"
+alias lazy-nd="~/repos/lazy-nd/"
 alias code='codium'
 
 

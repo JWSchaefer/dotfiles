@@ -54,11 +54,11 @@ on-focus-changed = ["move-mouse window-lazy-center"]
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 15
-inner.vertical =   15
-outer.left =       15
-outer.bottom =     15
-outer.top =        15
-outer.right =      15
+inner.vertical = 15
+outer.left = 15
+outer.bottom = 15
+outer.top = 15
+outer.right = 15
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -121,7 +121,7 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
+alt-a = 'workspace A'   # In your config, you can drop workspace bindings that you don't need
 alt-b = 'workspace B'
 alt-c = 'workspace C'
 alt-d = 'workspace D'
@@ -197,7 +197,10 @@ alt-shift-semicolon = 'mode service'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
@@ -257,3 +260,6 @@ run = 'move-node-to-workspace W'
 if.app-id = 'com.mathworks.matlab'
 run = 'move-node-to-workspace M'
 
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace D'

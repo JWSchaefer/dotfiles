@@ -3,16 +3,19 @@ return {
 	event = "VeryLazy",
 	config = function()
 		require("swenv").setup({
-			-- Should return a list of tables with a `name` and a `path` entry each.
-			-- Gets the argument `venvs_path` set below.
-			-- By default just lists the entries in `venvs_path`.
+			config = function()
+				local venv_path = vim.fn.getenv("PYRIGHT_VENV")
+				if venv_path and venv_path ~= "" then
+					vim.notify("Set virtual environment to " .. tostring(venv_path), vim.log.levels.ERROR)
+					require("swenv.api").set_venv("mdo")
+				end
+				vim.cmd("LspRestart")
+			end,
+
 			get_venvs = function(venvs_path)
 				return require("swenv.api").get_venvs(venvs_path)
 			end,
-			-- Path passed to `get_venvs`.
-			venvs_path = vim.fn.expand("~/Library/Caches/pypoetry/virtualenvs"),
 			venvs_path = vim.fn.expand("~/.venvs/"),
-			-- Something to do after setting an environment, for example call vim.cmd.LspRestart
 			post_set_venv = function(venv)
 				vim.cmd("LspRestart")
 			end,

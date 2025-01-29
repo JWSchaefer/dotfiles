@@ -26,13 +26,11 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			-- list of servers for mason to install
 			ensure_installed = {
 				"rust_analyzer",
 				"vale_ls",
 				"html",
 				"cssls",
-				"pyright",
 				"ruff",
 				"tailwindcss",
 				"svelte",
@@ -41,6 +39,7 @@ return {
 				"ltex",
 				"glslls",
 				"wgsl_analyzer",
+				"pyright",
 			},
 		})
 
@@ -51,9 +50,9 @@ return {
 				"isort", -- python formatter
 				"ruff", -- python formatter
 				"vale",
-				"pyright",
 				"eslint_d",
 				"vale",
+				"pyright",
 				"bibtex-tidy",
 			},
 		})
