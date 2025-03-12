@@ -37,6 +37,7 @@ return {
 				"lua_ls",
 				"prismals",
 				"ltex",
+				"texlab",
 				"glslls",
 				"wgsl_analyzer",
 				"pyright",
@@ -50,6 +51,7 @@ return {
 				"isort", -- python formatter
 				"ruff", -- python formatter
 				"vale",
+				"texlab",
 				"eslint_d",
 				"vale",
 				"pyright",

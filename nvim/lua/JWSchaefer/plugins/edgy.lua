@@ -1,0 +1,40 @@
+return {}
+
+-- return {
+-- 	"folke/edgy.nvim",
+-- 	event = "VeryLazy",
+-- 	init = function()
+-- 		vim.opt.laststatus = 3
+-- 		vim.opt.splitkeep = "screen"
+-- 		vim.api.nvim_set_hl(0, "WinBar", { link = "Normal" })
+-- 	end,
+-- 	opts = {
+-- 		animate = { enabled = false },
+-- 		wo = { winhighlight = "Normal:Normal,NormalNC:Normal,WinBar:Normal,WinBarNC:Normal", winfixwidth = false },
+-- 		title = { highlight = "WinBar" },
+-- 		fix_win_height = false,
+-- 		exit_when_last = true,
+-- 		left = {
+-- 			{
+-- 				title = "File System",
+-- 				ft = "neo-tree",
+-- 				filter = function(buf)
+-- 					return vim.b[buf].neo_tree_source == "filesystem"
+-- 				end,
+-- 				size = { height = 0.5 },
+-- 			},
+-- 			{
+-- 				title = "Git",
+-- 				ft = "neo-tree",
+-- 				filter = function(buf)
+-- 					return vim.b[buf].neo_tree_source == "git_status"
+-- 				end,
+-- 				pinned = true,
+-- 				collapsed = false, -- show window as closed/collapsed on start
+-- 				open = "Neotree position=right git_status",
+-- 			},
+--
+-- 			"neo-tree",
+-- 		},
+-- 	},
+-- }

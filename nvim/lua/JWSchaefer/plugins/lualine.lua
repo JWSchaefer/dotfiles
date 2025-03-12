@@ -12,6 +12,7 @@ return {
 				disabled_filetypes = {
 					statusline = {},
 					winbar = {},
+					"neo-tree",
 				},
 				ignore_focus = {},
 				always_divide_middle = true,
@@ -41,7 +42,7 @@ return {
 			tabline = {},
 			winbar = {},
 			inactive_winbar = {},
-			extensions = {},
+			extensions = { "nvim-tree", "lazy", "mason" },
 		})
 	end,
 }
