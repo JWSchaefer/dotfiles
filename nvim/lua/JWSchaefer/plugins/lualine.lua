@@ -34,7 +34,6 @@ return {
 				lualine_a = {},
 				lualine_b = {},
 				lualine_c = { "filename" },
-				lualine_d = { "swenv" },
 				lualine_x = { "location" },
 				lualine_y = {},
 				lualine_z = {},

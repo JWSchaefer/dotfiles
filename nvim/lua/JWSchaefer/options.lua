@@ -26,6 +26,28 @@ vim.opt.cmdheight = 0
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 
+vim.g.vimtex_quickfix_ignore_all_warnings = 1
+
+-- vim.g.vimtex_quickfix_latexlog = {
+-- 	default = 1,
+-- 	general = 1,
+-- 	references = 1,
+-- 	overfull = 0,
+-- 	underfull = 0,
+-- 	font = 1,
+-- 	packages = {
+-- 		default = 0,
+-- 		general = 0,
+-- 		babel = 1,
+-- 		biblatex = 1,
+-- 		fixltx2e = 1,
+-- 		hyperref = 1,
+-- 		natbib = 1,
+-- 		scrreprt = 1,
+-- 		titlesec = 0,
+-- 	},
+-- }
+
 -- vim.opt.spell = true
 -- vim.opt.spelllang = "en_gb"
 --

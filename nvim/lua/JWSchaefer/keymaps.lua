@@ -7,8 +7,11 @@ vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "Telescope live 
 vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
 
-local swenv = require("swenv.api")
-vim.keymap.set("n", "<leader>P", swenv.pick_venv, { desc = "Set Python Environment" })
+-- Vimtex
+vim.keymap.set("n", "<leader>fs", ":VimtexView<CR>", { desc = "Forward search" })
+
+-- local swenv = require("swenv.api")
+-- vim.keymap.set("n", "<leader>P", swenv.pick_venv, { desc = "Set Python Environment" })
 
 -- Comments
 vim.keymap.set("x", "<Leader>/", "<plug>(comment_toggle_linewise_visual)")
@@ -23,7 +26,7 @@ local opts = { silent = true, noremap = true }
 map("n", "<Leader>w", "<Cmd>w<CR>", opts)
 map("n", "<Leader>q", "<Cmd>q<CR>", opts)
 --[[ map("i", "<Esc>", "<Esc>:w<CR>", opts) ]]
-map("n", "<C-A>", "ggVG", opts)
+map("n", "<Leader>a", "ggVG", opts)
 
 -- Move 10 lines down in normal mode
 map({ "n", "v" }, "<C-Up>", "10k", opts)

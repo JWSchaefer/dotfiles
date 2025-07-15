@@ -1,10 +1,17 @@
-local function get_python_executable()
-	local cwd = vim.fn.getcwd()
-	local venv_path = cwd .. "/venv/bin/python"
-	if vim.fn.executable(venv_path) == 1 then
-		return venv_path
+local function get_python_path(workspace)
+	-- Use activated virtualenv if available
+	if vim.env.VIRTUAL_ENV then
+		return vim.fs.joinpath(vim.env.VIRTUAL_ENV, "bin", "python")
 	end
-	return "python"
+
+	-- If uv.lock exists, assume a local `.venv` exists
+	local uv_lock = vim.fn.glob(vim.fs.joinpath(workspace, "uv.lock"))
+	if uv_lock ~= "" then
+		return vim.fs.joinpath(workspace, ".venv", "bin", "python")
+	end
+
+	-- Fallback to system Python
+	return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
 end
 
 return {
@@ -78,13 +85,28 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.INFO] = "󰋼 ",
+					[vim.diagnostic.severity.HINT] = "󰌵 ",
+				},
+				texthl = {
+					[vim.diagnostic.severity.ERROR] = "Error",
+					[vim.diagnostic.severity.WARN] = "Error",
+					[vim.diagnostic.severity.HINT] = "Hint",
+					[vim.diagnostic.severity.INFO] = "Info",
+				},
+				numhl = {
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.HINT] = "",
+					[vim.diagnostic.severity.INFO] = "",
+				},
+			},
+		})
 
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers
@@ -109,25 +131,40 @@ return {
 				})
 			end,
 
-			-- ["pyright"] = function()
-			-- 	local python_path = ""
-			-- 	local venv_path = vim.fn.getenv("PYRIGHT_VENV")
-			--
-			-- 	if venv_path ~= vim.NIL then
-			-- 		python_path = tostring(venv_path) .. "/bin/python3"
-			-- 	else
-			-- 		venv_path = ""
-			-- 	end
-			-- 	-- vim.notify(tostring(venv_path), vim.log.levels.ERROR)
-			-- 	-- vim.notify(python_path, vim.log.levels.ERROR)
-			--
-			-- 	lspconfig["pyright"].setup({
-			-- 		settings = {
-			-- 			pythonPath = python_path,
-			-- 			venvPath = tostring(venv_path),
-			-- 		},
-			-- 	})
-			-- end,
+			["ruff_lsp"] = function()
+				lspconfig["ruff_lsp"].setup({
+					on_attach = function(client, bufnr)
+						client.server_capabilities.hoverProvider = false
+					end,
+					before_init = function(initialize_parameters, config)
+						local python_path = get_python_path(config.root_dir)
+
+						initialize_parameters.initializationOptions = {
+							settings = {
+								interpreter = { python_path },
+							},
+						}
+					end,
+				})
+			end,
+
+			["pyright"] = function()
+				lspconfig["pyright"].setup({
+					before_init = function(_, config)
+						local python_path = get_python_path(config.root_dir)
+
+						-- Extract venvPath and venv name from the full path
+						local venv_dir = vim.fs.dirname(vim.fs.dirname(python_path)) -- e.g., /path/to/project/.venv
+						local venv_name = vim.fs.basename(venv_dir) -- e.g., ".venv"
+						local venv_path = vim.fs.dirname(venv_dir) -- e.g., /path/to/project
+
+						config.settings = config.settings or {}
+						config.settings.python = config.settings.python or {}
+						config.settings.python.venvPath = venv_path
+						config.settings.python.pythonPath = python_path
+					end,
+				})
+			end,
 
 			["ltex"] = function()
 				lspconfig["ltex"].setup({
